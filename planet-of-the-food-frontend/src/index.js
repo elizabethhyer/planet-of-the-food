@@ -17,6 +17,13 @@ function submitForm() {
 
     fetch("https://localhost:3000/oods", options)
     .then(r => r.json())
-    .then(oodObj => renderOod(oodObj))
+    .then(oodObj => renderOod(oodObj.data))
 
+}
+
+function renderOod(ood) {
+    let div = document.getElementById('oodContainer')
+    let pgh = document.createElement('p')
+    pgh.innerText = ood.attributes.name
+    div.appendChild(pgh)
 }
