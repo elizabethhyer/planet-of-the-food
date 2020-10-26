@@ -2,10 +2,10 @@ const form = document.getElementById('oodForm')
 
 form.addEventListener('submit', submitForm)
 
-function submitForm(e) {
-    e.preventDefault()
+function submitForm() {
+    event.preventDefault()
     const name = document.getElementById('oodName').value
-
+    document.getElementById('oodName').value = ""
     const options = {
         method: "POST",
         headers: {
@@ -16,4 +16,7 @@ function submitForm(e) {
     }
 
     fetch("https://localhost:3000/oods", options)
+    .then(r => r.json())
+    .then(oodObj => renderOod(oodObj))
+
 }
