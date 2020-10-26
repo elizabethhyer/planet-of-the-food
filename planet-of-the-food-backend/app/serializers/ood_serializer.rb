@@ -1,5 +1,7 @@
 class OodSerializer
   include FastJsonapi::ObjectSerializer
   attributes :name
-  has_many :recipes
+  attribute :recipes do |ood|
+    RecipeSerializer.new(ood.recipes).as_json["data"]
+  end 
 end

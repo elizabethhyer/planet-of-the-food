@@ -1,10 +1,7 @@
 class OodsController < ApplicationController
 
     def index 
-        options = {
-            include: [:recipes]
-        }
-        render json: OodSerializer.new(Ood.all, options)
+        render json: OodSerializer.new(Ood.all)
     end 
 
 end
