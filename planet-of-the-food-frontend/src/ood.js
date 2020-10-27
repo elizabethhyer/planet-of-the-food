@@ -7,16 +7,16 @@ class Ood {
         Ood.allOods.push(this)
     }
 
-    renderOod(ood) {
+    renderOod() {
         let div = document.getElementById('oodContainer')
         let pgh = document.createElement('p')
-        pgh.innerText = ood.attributes.name
+        pgh.innerText = this.name
         div.appendChild(pgh)
     }
     
     static renderOods() {
         for (let ood of this.allOods) {
-            renderOod(ood)
+            ood.renderOod()
         }    
     }
     
@@ -28,6 +28,27 @@ class Ood {
                 let newOod = new Ood(ood)
             } 
             this.renderOods()
+        })
+    }
+
+    static createOod() {
+        event.preventDefault()
+        const name = document.getElementById('oodName').value
+        document.getElementById('oodName').value = ""
+        const options = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({ood: {name: name}})
+        }
+    
+        fetch("http://localhost:3000/oods", options)
+        .then(r => r.json())
+        .then(oodObj => {
+            let newOod = new Ood(oodObj.data)
+            newOod.renderOod()
         })
     }
     
