@@ -1,5 +1,12 @@
 class Ood {
 
+    static allOods = []
+
+    constructor(ood) {
+        this.name = ood.attributes.name
+        Ood.allOods.push(this)
+    }
+
     renderOod(ood) {
         let div = document.getElementById('oodContainer')
         let pgh = document.createElement('p')
@@ -7,8 +14,8 @@ class Ood {
         div.appendChild(pgh)
     }
     
-    static renderOods(oods) {
-        for (ood of oods) {
+    static renderOods() {
+        for (let ood of this.allOods) {
             renderOod(ood)
         }    
     }
@@ -16,7 +23,12 @@ class Ood {
     static fetchOods() {
         fetch("http://localhost:3000/oods")
         .then(r => r.json())
-        .then(oods => console.log(oods.data))
+        .then(oods => {
+            for (let ood of oods.data) {
+                let newOod = new Ood(ood)
+            } 
+            this.renderOods()
+        })
     }
     
 }
