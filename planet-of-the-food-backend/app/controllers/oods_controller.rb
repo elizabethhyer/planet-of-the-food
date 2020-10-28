@@ -9,6 +9,11 @@ class OodsController < ApplicationController
         render json: OodSerializer.new(ood)
     end 
 
+    def destroy
+        ood = Ood.find_by(id: params[:id])
+        ood.destroy
+    end 
+
     private 
 
     def ood_params
