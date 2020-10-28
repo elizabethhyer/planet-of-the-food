@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
 
     def create 
-        recipe = recipe.new(recipe_params)
+        recipe = Recipe.new(recipe_params)
         if recipe.save
             render json: RecipeSerializer.new(recipe)
         else 

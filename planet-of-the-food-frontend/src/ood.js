@@ -19,21 +19,30 @@ class Ood {
     }
 
     showOod() {
+        // debugger
         let container = document.getElementById('container')
         let h3 = document.createElement('h3')
         let ul = document.createElement('ul')
         let form = document.createElement('form')
-        let label = document.createElement('label')
-        let input = document.createElement('input')
+        let nameLabel = document.createElement('label')
+        let contentLabel = document.createElement('label')
+        let nameInput = document.createElement('input')
+        let contentInput = document.createElement('input')
         let btn = document.createElement('input')
         btn.type = "Submit"
         btn.innerText = "Submit"
-        input.id = "newRecipe" 
-        label.innerText = "New Recipe:"
+        nameInput.id = "newRecipeName"
+        contentInput.id = "newRecipeContent" 
+        nameLabel.innerText = "Name:"
+        contentLabel.innerText = "Ingredients:"
+
         form.id = "recipeForm"
+
         ul.id = "oodUL"
-        form.append(label)
-        form.append(input)
+        form.append(nameLabel)
+        form.append(nameInput)
+        form.append(contentLabel)
+        form.append(contentInput)
         form.append(btn)
         container.innerHTML = ""
         h3.innerText = this.name
@@ -49,9 +58,10 @@ class Ood {
 
     async submitRecipe() {
         event.preventDefault()
-        let content = document.getElementById("newRecipe").value
+        let name = document.getElementById("newRecipeName").value
+        let content = document.getElementById("newRecipeContent").value
         let ood_id = this.id 
-        let recipe = {recipe: {content, ood_id}}
+        let recipe = {recipe: {name, content, ood_id}}
         let options = {
             method: "POST",
             headers: {
@@ -61,7 +71,9 @@ class Ood {
             body: JSON.stringify(recipe)
         }
 
-        document.getElementById("newRecipe").value = ""
+        document.getElementById("newRecipeName").value = ""
+        document.getElementById("newRecipeContent").value = ""
+
         try {
             let response = await fetch("http://localhost:3000/recipes", options)
             let recipe = await response.json()
@@ -70,7 +82,7 @@ class Ood {
                     let ood = Ood.allOods.find(ood => parseInt(ood.id) === newRecipe.oodId)
                     let ul = document.querySelector('ul')
                     ood.recipes.push(newRecipe)
-                    ul.innerHTML += newRecipe.recipeNameHTML()
+                    ul.innerHTML += newRecipe.recipeContentHTML()
                 } else {
                   throw new Error(recipe.message)
                 }

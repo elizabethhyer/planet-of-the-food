@@ -2,9 +2,5 @@ To Do
 
 nav bar
 form for recipe name as well as content
-validations in backend (if save, etc)
-
-ood.js:51 Uncaught TypeError: Cannot read property 'value' of null
-    at Ood.submitRecipe (ood.js:51)
 
     WTFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
