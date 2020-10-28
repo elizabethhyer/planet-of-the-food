@@ -22,6 +22,18 @@ class Ood {
         let container = document.getElementById('container')
         let h3 = document.createElement('h3')
         let ul = document.createElement('ul')
+        let form = document.createElement('form')
+        let label = document.createElement('label')
+        let input = document.createElement('input')
+        let btn = document.createElement('input')
+        btn.type = "Submit"
+        btn.innerText = "Submit"
+        input.id = "content" 
+        label.innerText = "Content: "
+        form.id = "recipeForm"
+        form.append(label)
+        form.append(input)
+        form.append(btn)
         container.innerHTML = ""
         h3.innerText = this.name
         container.append(h3)
@@ -29,8 +41,8 @@ class Ood {
         for (let recipe of this.recipes) {
             ul.innerHTML += recipe.recipeNameHTML()
             ul.innerHTML += recipe.recipeContentHTML()
-
         }
+        container.append(form)
     }
     
     static renderOods() {
