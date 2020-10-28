@@ -21,9 +21,12 @@ class Ood {
     showOod() {
         let container = document.getElementById('container')
         let h3 = document.createElement('h3')
+        let ul = document.createElement('ul')
         container.innerHTML = ""
         h3.innerText = this.name
         container.append(h3)
+        container.append(ul)
+        
     }
     
     static renderOods() {
