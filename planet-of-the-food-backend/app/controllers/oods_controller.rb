@@ -5,13 +5,18 @@ class OodsController < ApplicationController
     end 
 
     def create 
-        ood = Ood.create(ood_params)
-        render json: OodSerializer.new(ood)
+        ood = Ood.new(ood_params)
+        if ood.save
+            render json: OodSerializer.new(ood)
+        else 
+            render json: {message: list.errors.full_messages}
+        end 
     end 
 
     def destroy
         ood = Ood.find_by(id: params[:id])
         ood.destroy
+        render json: {message: "success"}
     end 
 
     private 
