@@ -19,17 +19,10 @@ h3 {
     margin-bottom: 20px;
 }
 
-#oodForm {
+#oodForm, #recipeForm {
     background-color: rgb(235, 235, 188);
     border: 5px solid #444;
-}
-
-#nameForm {
-    background-color: rgb(235, 235, 188);
-    border: 5px solid #444;
-}
-
-#contentForm {
-    background-color: rgb(235, 235, 188);
-    border: 5px solid #444;
+    width: 400px;
+    padding: 25px;
+    margin: 30px;
 }
