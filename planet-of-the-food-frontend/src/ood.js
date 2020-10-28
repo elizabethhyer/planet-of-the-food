@@ -5,7 +5,7 @@ class Ood {
     constructor(ood) {
         this.name = ood.attributes.name
         this.id = ood.id
-        this.recipes = 
+        this.recipes = ood.attributes.recipes.map(recipe => new Recipe(recipe))
         Ood.allOods.push(this)
     }
 
