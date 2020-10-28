@@ -28,8 +28,8 @@ class Ood {
         let btn = document.createElement('input')
         btn.type = "Submit"
         btn.innerText = "Submit"
-        input.id = "content" 
-        label.innerText = "Content: "
+        input.id = "newRecipe" 
+        label.innerText = "New Recipe: "
         form.id = "recipeForm"
         form.append(label)
         form.append(input)
@@ -43,6 +43,25 @@ class Ood {
             ul.innerHTML += recipe.recipeContentHTML()
         }
         container.append(form)
+        form.addEventListener('submit', this.submitRecipe.bind(this))
+    }
+
+    submitRecipe(e) {
+        e.preventDefault()
+        let content = document.getElementById("content").value
+        let ood_id = this.id 
+        let recipe = {recipe: {content, ood_id}}
+        let options = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(recipe)
+        }
+        fetch("http://localhost:3000/recipes", options)
+        .then(response => response.json())
+        .then(data => console.log(data))
     }
     
     static renderOods() {
