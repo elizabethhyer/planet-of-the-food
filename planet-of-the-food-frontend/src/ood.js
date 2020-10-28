@@ -14,12 +14,16 @@ class Ood {
         let pgh = document.createElement('p')
         pgh.id = this.id 
         pgh.innerText = this.name
-        pgh.addEventListener('click', this.showOod)
+        pgh.addEventListener('click', this.showOod.bind(this))
         div.append(pgh)
     }
 
     showOod() {
-        
+        let container = document.getElementById('container')
+        let h3 = document.createElement('h3')
+        container.innerHTML = ""
+        h3.innerText = this.name
+        container.append(h3)
     }
     
     static renderOods() {
