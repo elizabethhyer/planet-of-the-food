@@ -4,6 +4,8 @@ class Ood {
 
     constructor(ood) {
         this.name = ood.attributes.name
+        this.id = ood.id
+        this.recipes = 
         Ood.allOods.push(this)
     }
 
