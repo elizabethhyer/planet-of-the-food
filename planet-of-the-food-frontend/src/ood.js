@@ -26,7 +26,11 @@ class Ood {
         h3.innerText = this.name
         container.append(h3)
         container.append(ul)
-        
+        for (let recipe of this.recipes) {
+            ul.innerHTML += recipe.recipeNameHTML()
+            ul.innerHTML += recipe.recipeContentHTML()
+
+        }
     }
     
     static renderOods() {
