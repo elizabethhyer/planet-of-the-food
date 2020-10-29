@@ -47,19 +47,10 @@ class Ood {
     container.append(ul)
     for (let recipe of this.recipes) {
       recipe.listOodRecipes()
-      // ul.innerHTML += recipe.recipeNameHTML()
-      // ul.innerHTML += recipe.recipeContentHTML()
     }
     container.append(form)
     form.addEventListener('submit', this.submitRecipe.bind(this))
   }
-
-  // listOodRecipes() {
-  //   let ul = document.createElement('ul')
-  //   ul.id = "oodUL"
-  //   ul.innerHTML += recipe.recipeNameHTML()
-  //   ul.innerHTML += recipe.recipeContentHTML()
-  // }
 
   async submitRecipe() {
     event.preventDefault()
@@ -87,8 +78,6 @@ class Ood {
         let ood = Ood.allOods.find(ood => parseInt(ood.id) === newRecipe.oodId)
         let ul = document.querySelector('ul')
         ood.recipes.push(newRecipe)
-        // ul.innerHTML += newRecipe.recipeNameHTML()
-        // ul.innerHTML += newRecipe.recipeContentHTML()
         newRecipe.listOodRecipes()
       } else {
         throw new Error(recipe.message)
