@@ -15,4 +15,11 @@ class Recipe {
         return `<li id="${this.id}">${this.content}</li>`
     }
 
+
+    listOodRecipes() {
+        let ul = document.getElementById('oodUL')
+        ul.innerHTML += this.recipeNameHTML()
+        ul.innerHTML += this.recipeContentHTML()
+    }
+
 }
