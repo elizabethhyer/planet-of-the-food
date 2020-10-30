@@ -31,3 +31,7 @@ input, btn {
     padding: 10px;
     font-size: 16;
 }
+
+#newRecipeName, #newRecipeContent {
+    display: block;
+}
