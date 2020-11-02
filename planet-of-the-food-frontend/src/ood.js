@@ -99,7 +99,7 @@ class Ood {
       .then(oods => {
         if (oods.data) {
           for (let ood of oods.data) {
-            let newOod = new Ood(ood)
+            new Ood(ood)
           }
           this.renderOods()
         } else {
